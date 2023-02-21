@@ -10,6 +10,36 @@ public class Menu {
 		
 		Scanner leia = new Scanner(System.in);
 		int opcao;
+
+		//Instancia 2 objetos utilizando o método construtor da classe Cadastro
+		Cadastro cad1 = new Cadastro("Vinicius", "123abc", 19041996, "123.456.789-10", "Masculino", 11912345678l);
+		Cadastro cad2 = new Cadastro("Samuel", "2233sn", 20052000, "222.333.444-08", "Masculino", 11987654321l);
+		
+		// Visualiza os dados cadastrados para os 2 objetos
+		cad1.visualizar();
+		cad2.visualizar();
+		
+		// Exemplo utilizando os métodos get da classe Cadastro
+		System.out.println(" ");
+		System.out.println("Dados pelos GETS da classe Cadastro");
+		System.out.println(cad1.getNome());
+		System.out.println(cad1.getSenha());
+		System.out.println(cad1.getDataNascimento());
+		System.out.println(cad1.getCpf());
+		System.out.println(cad1.getSexo());
+		System.out.println(cad1.getTel());
+		System.out.println(" ");
+
+		// Exemplo utilizando os métodos set da classe Cadastro
+		cad1.setNome("Vinicius Prazeres");
+		cad1.setSenha("abc123");
+		cad1.setDataNascimento(15011998);
+		cad1.setCpf("111.222.333-01");
+		cad1.setSexo("Feminino");
+		cad1.setTel(1222335566);
+		
+		// Visualiza os dados do objeto após alterados
+		cad1.visualizar();
 				
 				
 				while(true) {
