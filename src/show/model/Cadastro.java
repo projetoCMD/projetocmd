@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Cadastro {
 	
-	private Long id;
+	private long id;
     private String nome; 
     private String senha;
     private String cpf;
@@ -13,7 +13,7 @@ public class Cadastro {
     private String email;
     private LocalDate dataNascimento;
     
-	public Cadastro(Long id, String nome, String senha, String cpf, String sexo, String telefone, LocalDate dataNascimento, String email) {
+	public Cadastro(long id, String nome, String senha, String cpf, String sexo, String telefone, LocalDate dataNascimento, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -26,11 +26,11 @@ public class Cadastro {
 		
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

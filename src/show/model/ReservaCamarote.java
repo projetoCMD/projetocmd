@@ -3,57 +3,89 @@ package show.model;
 public abstract class ReservaCamarote {
 	
 	private String nome;
-	private float saldo;
-	private int tipo;
-	
-	public ReservaCamarote(String nome, float saldo, int tipo) {
+	private int espacoCamorete;
+	private String alimento;
+	private String bebida;
+	private String escolherMusica;
+
+	public ReservaCamarote(String nome, int espacoCamorete, String alimento, String bebida, String escolherMusica) {
 		this.nome = nome;
-		this.saldo = saldo;
-		this.tipo = tipo;
-
+		this.espacoCamorete = espacoCamorete;
+		this.alimento = alimento;
+		this.bebida = bebida;
+		this.escolherMusica = escolherMusica;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public float getSaldo() {
-		return saldo;
+
+	public int getEspacoCamorete() {
+		return espacoCamorete;
 	}
 
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
-	}
-		
-	public int getTipo() {
-		return tipo;
+	
+	public void setEspacoCamorete(int espacoCamorete) {
+		this.espacoCamorete = espacoCamorete;
 	}
 
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
+
+	public String getAlimento() {
+		return alimento;
 	}
+
+
+	public void setAlimento(String alimento) {
+		this.alimento = alimento;
+	}
+
+
+	public String getBebida() {
+		return bebida;
+	}
+
+
+	public void setBebida(String bebida) {
+		this.bebida = bebida;
+	}
+
+
+	public String getEscolherMusica() {
+		return escolherMusica;
+	}
+
+
+	public void setEscolherMusica(String escolherMusica) {
+		this.escolherMusica = escolherMusica;
+	}
+
 
 	public void visualizar() {
+		
 		String tipo = "";
-		switch(this.tipo) {
 		
-		
+		switch(this.espacoCamorete) {		
 		case 1 -> tipo = "Reserva Camarote (Especial)";
-		case 2 -> tipo = "Reserva Camarote (Mast)";
+		case 2 -> tipo = "Reserva Camarote (Tradional)";
 		
 	}	
 		
-		
+	
 	System.out.println("#######################");	
 	System.out.println("   RESERVA CAMAROTE    ");	
 	System.out.println("#######################");	
 	System.out.println("Nome: " + this.nome);			
-	System.out.println("Saldo Disponivel: " + this.saldo);			
-	System.out.println("Espaço do Camorete Escolhido: " + this.tipo);	
+	System.out.println("Tipo de Reserva Camarote: " + tipo);
+	System.out.println("Escolha o numero do camarote: " + this.espacoCamorete);
+	System.out.println("Informe o Alimento: " + this.alimento);	
+	System.out.println("Qual a Bebida Desejada: " + this.bebida);	
+	System.out.println("Esolha uma música para o Show: " + this.bebida);	
 	
    }
 }
