@@ -14,7 +14,6 @@ public class Cadastro {
     private LocalDate dataNascimento;
     
 	public Cadastro(long id, String nome, String senha, String cpf, String sexo, String telefone, LocalDate dataNascimento, String email) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.senha = senha;
