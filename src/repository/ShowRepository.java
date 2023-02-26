@@ -1,4 +1,4 @@
-package repository;
+package src.repository;
 
 import show.model.Cadastro;
 
@@ -6,7 +6,9 @@ public interface ShowRepository {
 	
 	public void listarTodas();
 	public void cadastrar(Cadastro cadastro);
-	public void criarCamarotes(int n);
-	public void agendarCamarote(String nomeAgenda, int numCam, int pacote);
-
+	public void criarCamarotesTradicionais();
+	public void criarCamarotesEspeciais();
+	public boolean agendarCamarote(String nomeAgenda, int pacote);
+	public void conferirAgendamento(String nome, int pacote, int numAgenda);
+	public void cancelarReserva(String nome, int numCam, int pacote);
 }
