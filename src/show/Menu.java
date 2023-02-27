@@ -59,7 +59,11 @@ public class Menu {
 			System.out.println("			2- LOGIN											 ");
 			System.out.println("			3- VISUALIZAR CADASTRO								 ");
 			System.out.println("			4- RESERVAR            								 ");
+<<<<<<< HEAD
 			System.out.println("			5- RESERVAR     									 ");
+=======
+			System.out.println("			5- APAGAR cliente									 ");
+>>>>>>> c6da1063abd830a1b32754f7bafb1219b13cc8eb
 			System.out.println("			6- CONSULTAR cliente								 ");
 			System.out.println("			7- CONSULTAR RESERVA								 ");
 			System.out.println("			8- CANCELAR RESERVA	      							 ");
