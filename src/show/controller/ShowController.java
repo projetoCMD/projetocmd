@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import repository.ShowRepository;
 import show.model.Cadastro;
 import show.model.ReservaCamarote;
 import show.model.ReservaCamaroteEspecial;
 import show.model.ReservaCamaroteTradicional;
-import src.repository.ShowRepository;
-
 
 public class ShowController implements ShowRepository {
 	

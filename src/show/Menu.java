@@ -1,4 +1,4 @@
-package src.show;
+package show;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -59,7 +59,7 @@ public class Menu {
 			System.out.println("			2- LOGIN											 ");
 			System.out.println("			3- VISUALIZAR CADASTRO								 ");
 			System.out.println("			4- RESERVAR            								 ");
-			System.out.println("			5- APAGAR cliente									 ");
+			System.out.println("			5- RESERVAR     									 ");
 			System.out.println("			6- CONSULTAR cliente								 ");
 			System.out.println("			7- CONSULTAR RESERVA								 ");
 			System.out.println("			8- CANCELAR RESERVA	      							 ");
