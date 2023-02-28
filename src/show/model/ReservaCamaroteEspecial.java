@@ -2,9 +2,11 @@ package show.model;
 
 public class ReservaCamaroteEspecial extends ReservaCamarote{
 	
+
 private boolean acessoVip;
 
 	
+
 
 	public ReservaCamaroteEspecial(boolean disponibildade, String nome, int espacoCamarote, int tipoPacote,
 			boolean acessoVip) {
@@ -12,14 +14,26 @@ private boolean acessoVip;
 		this.acessoVip = acessoVip;
 	}
 
-	public boolean getAcessoVip() {
+
+	
+
+	
+	public boolean isAcessoVip() {
 		return acessoVip;
 	}
+
+
+
+
 
 	public void setAcessoVip(boolean acessoVip) {
 		this.acessoVip = acessoVip;
 	}
-	
+
+
+
+
+
 	public void visualizar() {
 		super.visualizar();
 		//ACESSO AO CARDÁPIO ->Tratativa VIP ou não

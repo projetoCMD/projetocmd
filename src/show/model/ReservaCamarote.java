@@ -12,12 +12,35 @@ public abstract class ReservaCamarote {
 	
 	
 	
+	
+	
+
+
 	public ReservaCamarote(boolean disponibildade, String nome, int espacoCamarote, int tipoPacote) {
+	
+
 		this.disponibildade = disponibildade;
 		this.nome = nome;
 		this.espacoCamarote = espacoCamarote;
 		this.tipoPacote = tipoPacote;
 	}
+
+
+
+
+	public boolean isDisponibildade() {
+		return disponibildade;
+	}
+
+
+
+
+
+	public void setDisponibildade(boolean disponibildade) {
+		this.disponibildade = disponibildade;
+	}
+
+
 
 
 
@@ -27,15 +50,21 @@ public abstract class ReservaCamarote {
 
 
 
+
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
 
 
+
+
 	public int getEspacoCamarote() {
 		return espacoCamarote;
 	}
+
+
 
 
 
@@ -47,22 +76,11 @@ public abstract class ReservaCamarote {
 
 
 
-
-	public boolean isDisponibildade() {
-		return disponibildade;
-	}
-
-
-
-	public void setDisponibildade(boolean disponibildade) {
-		this.disponibildade = disponibildade;
-	}
-
-
-
 	public int getTipoPacote() {
 		return tipoPacote;
 	}
+
+
 
 
 
@@ -72,32 +90,37 @@ public abstract class ReservaCamarote {
 
 
 
+
+
+
 	public void visualizar() {
 		
 		String disponibilidade = "";
 
-		if (this.disponibildade == true)
-			disponibilidade = "Disponível";
-		else
-			disponibilidade = "Reservado";
-		
+
+        if (this.disponibildade == true)
+            disponibilidade = "Disponível";
+        else
+            disponibilidade = "Reservado";
 		String tipo = "";
-
-		switch (this.tipoPacote) {
-			case 1 -> tipo = "Reserva Camarote (Tradicional)";
-			case 2 -> tipo = "Reserva Camarote (Especial)";
-		}
-
-		System.out.println("#######################");
-		System.out.println("   RESERVA CAMAROTE    ");
-		System.out.println("#######################");
-		System.out.println("Nome: " + this.nome);
-		System.out.println("Tipo de Reserva Camarote: " + tipo);
-		System.out.println("Escolha o numero do camarote: " + this.espacoCamarote);
-		System.out.println("Status: " + disponibilidade);
-
 		
-	}
+		switch(this.tipoPacote) {		
+		case 1 -> tipo = "Reserva Camarote (Especial)";
+		case 2 -> tipo = "Reserva Camarote (Tradisonal)";
+		
+	}	
+		
+	//boolean disponibildade, String nome, int espacoCamarote, int tipoPacote
+	System.out.println("");
+	System.out.println("#######################");	
+	System.out.println("   RESERVA CAMAROTE    ");	
+	System.out.println("#######################");	
+	System.out.println("Nome: " + this.nome);			
+	System.out.println("Tipo de Reserva Camarote: " + tipo);
+	System.out.println("Escolha o numero do camarote: " + this.espacoCamarote);
+	System.out.println("Camarotes Disponivel: " + disponibilidade);	
+	System.out.println("########################");
 	
-   
+   }
+
 }

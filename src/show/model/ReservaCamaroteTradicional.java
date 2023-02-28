@@ -2,9 +2,12 @@ package show.model;
 
 public class ReservaCamaroteTradicional extends ReservaCamarote {
 
+
 private float valorDisponivel;
 	
 	
+
+
 
 	public ReservaCamaroteTradicional(boolean disponibildade, String nome, int espacoCamarote, int tipoPacote,
 			float valorDisponivel) {
