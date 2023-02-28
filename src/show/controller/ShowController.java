@@ -1,48 +1,27 @@
 package show.controller;
-
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-
-
-
-
 import repository.ShowRepository;
 import show.model.Cadastro;
 import show.model.ReservaCamarote;
 import show.model.ReservaCamaroteEspecial;
 import show.model.ReservaCamaroteTradicional;
-
-
-
 	
-
-
-
 public class ShowController implements ShowRepository {
 	
 	Scanner leia = new Scanner(System.in);
 	
 	private ArrayList<ReservaCamarote> listaReserva = new ArrayList<ReservaCamarote>();
 	private ArrayList<Cadastro> cadastrarUsuario = new ArrayList<Cadastro>();
-
-
 	char continuar;
 	char confirmar;
 	int numCam, pacote;
-
 	int num;
 	String nomePacote;
-
-
-
-
 	public boolean autenticar(String email, String senha) {
 		for (Cadastro cadastro : cadastrarUsuario) {
 			if (cadastro.getEmail().equals(email) && cadastro.getSenha().equals(senha)) {
@@ -51,9 +30,7 @@ public class ShowController implements ShowRepository {
 		}
 		return false;
 	}
-
 	public boolean dataNascimento(String dataN) {
-
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataNascFormat = LocalDate.parse(dataN, format);
 		LocalDate curDate = LocalDate.now();
@@ -61,67 +38,46 @@ public class ShowController implements ShowRepository {
 			if (Period.between(dataNascFormat, curDate).getYears() >= 18)
 				return true;
 		}
-
 		return false;
-
 	}
-
-
 	public void listarCadastro() {
 		for (var cadastro : cadastrarUsuario)
 			cadastro.visualizar();
 		// Listar a Cadastro para o usuário
-
 	}
-
 	public void procurarPorEmail(String email) {
 		var cadastro = buscarNaCollection(email);
-
 		if (cadastro != null)
 			cadastro.visualizar();
 		else
 			System.out.println("O Cadastro do Email: " + email + " não foi encontrada!");
 	}
-
 	public void deletar(Cadastro cadastro) {
-
 		if (cadastro != null) {
 			if (cadastrarUsuario.remove(cadastro) == true)
 				System.out.println("O Cadastro do Email: " + cadastro.getEmail() + " foi excluído!");
 		} else
-			System.out.println("O Cadastro do Email  não foi encontrada!");
-
+			System.out.println("O Cadastro do Email não foi encontrada!");
 	}
-
 	public Cadastro buscarNaCollection(String email) {
 		for (var cadastro : cadastrarUsuario) {
 			if (cadastro.getEmail() == email)
 				return cadastro;
 		}
-
 		return null;
 	}
-
-
 	@Override
 	public void listarTodas() {
 		for (var reserva : listaReserva)
 			reserva.visualizar();
 		// Listar a reserva para o usuário
-
 	}
-
 	@Override
 	public void cadastrar(Cadastro cadastro) {
-
-
 		cadastrarUsuario.add(cadastro);
 		System.out.println("Cadastro Realizado com Sucesso.");
-
 	}
-
 	
-
 	@Override
 	public Cadastro retornaLogado(String email, String senha) {
 		for (Cadastro cadastro : cadastrarUsuario) {
@@ -139,26 +95,18 @@ public class ShowController implements ShowRepository {
 			}
 		}
 	}
-
 	
-
 	public void criarCamarotesTradicionais() {
-
 		for (int i = 0; i < 3; i++) {
 			listaReserva.add(new ReservaCamaroteTradicional(true, "", (i + 1), 1, 0));
 		}
 	}
-
-
 	@Override
-
 	public void criarCamarotesEspeciais() {
 		for (int i = 0; i < 3; i++) {
 			listaReserva.add(new ReservaCamaroteEspecial(true, "", (i + 1), 2, false));
 		}
 	}
-
-
 	@Override
 	public boolean agendarCamarote(String nomeAgenda, int pacote) {
 		
@@ -202,11 +150,9 @@ public class ShowController implements ShowRepository {
 					leia.nextLine();
 					numCam = 0;
 					continue;					}
-
 				// Se o número for menor que 1 ou maiior que 4, recomeça o loop
 				if (numCam < 1 || numCam > 3)
 					System.out.println("\nDigite um número entre 1 e 3!");
-
 			} while (numCam< 1 || numCam > 3);
 			
 			
@@ -225,7 +171,6 @@ public class ShowController implements ShowRepository {
 			if(confirmar == 's' || confirmar == 'S') {
 				adicionarReserva(numCam, pacote, nomeAgenda);
 				return false;
-
 			}
 			return true;
 		
@@ -233,11 +178,8 @@ public class ShowController implements ShowRepository {
 	}
 	
 	
-
 	public void login() {
-
 		// Logar no sisitema apenas quando já cadastrado
-
 	}
 	
 	public ReservaCamarote buscarNaCollection(int numCam, int pacote) {
@@ -251,28 +193,19 @@ public class ShowController implements ShowRepository {
 	}
 	
 	
-
 	
-
 	@Override
 	public void conferirAgendamento(String nome, int numCam, int pacote) {
 		var buscarReserva = buscarResNaCollection(nome, numCam, pacote);
-
 		if (buscarReserva != null) {
-
 			buscarReserva.visualizar();
-
 		} else
 			System.out.println("\nA Reserva não foi encontrada!");
-
 	}
-
 	@Override
 	public void cancelarReserva(String nome, int numCam, int pacote) {
 		var buscarReserva = buscarResNaCollection(nome, numCam, pacote);
-
 		if (buscarReserva != null) {
-
 			if (buscarReserva.getTipoPacote() == 1)
 				listaReserva.set(listaReserva.indexOf(buscarReserva),
 						new ReservaCamaroteTradicional(true, "", buscarReserva.getEspacoCamarote(), 1, 0));
@@ -281,34 +214,23 @@ public class ShowController implements ShowRepository {
 						new ReservaCamaroteEspecial(true, "", buscarReserva.getEspacoCamarote(), 2, false));
 		} else
 			System.out.println("\nA Reserva não foi encontrada!");
-
 	}
-
 	public ReservaCamarote buscarResNaCollection(String nome, int numCam, int pacote) {
 		for (var reserva : listaReserva) {
 			if (reserva.getNome().contains(nome) && reserva.getEspacoCamarote() == numCam
 					&& reserva.getTipoPacote() == pacote) {
-
 				return reserva;
 			}
 		}
-
 		return null;
 	}
-
-
 	
 	
-
 	private boolean reservado(int numCam, int pacote) {
-
 		for (var reserva : listaReserva) {
-
 			if (reserva.getTipoPacote() == pacote) {
 				// System.out.println(reserva.getTipoPacote());
 				if (reserva.getEspacoCamarote() == numCam) {
-
-
 					if (reserva.isDisponibildade() == false)
 						return false;
 				}
@@ -316,17 +238,11 @@ public class ShowController implements ShowRepository {
 		}
 		return true;
 	}
-
 	
 	
-
-
-
 	private void adicionarReserva(int numCam, int pacote, String nomeAgenda) {
-
 		var buscarReserva = buscarNaCollection(numCam, pacote);
 		ReservaCamarote reserva;
-
 		if (pacote == 1) {
 			reserva = listaReserva.set(listaReserva.indexOf(buscarReserva),
 					new ReservaCamaroteTradicional(false, nomeAgenda, numCam, pacote, 100.0f));
@@ -335,13 +251,6 @@ public class ShowController implements ShowRepository {
 					new ReservaCamaroteEspecial(false, nomeAgenda, numCam, pacote, true));
 			
 		}
-
-
 		
-
 	}
-
-
-
 }
-

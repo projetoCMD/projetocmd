@@ -1,42 +1,30 @@
 package show;
-
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import show.controller.ShowController;
 import show.model.Cadastro;
 import show.model.CadastroHomem;
 import show.model.CadastroMulher;
 import show.model.CadastroOutros;
-
 public class Menu {
-
 	public static void main(String[] args) {
-
-
-
-
 		
 				
 				Scanner leia = new Scanner(System.in);
 				ShowController cliente = new ShowController();
 				Cadastro clienteLogado = null;
-				int opcao; 
-				int numCam = 0; 
+				int opcao;
+				int numCam = 0;
 				int pacote = 0;
 				boolean x = true;
 				boolean logado = false;
 				char apagar;
 				char deslogar;
 				
-
-
 				String nome,nomeCad, senha,senhaCad, cpf,cpfCad,sexo, telefone,telefoneCad, email,emailbuscar=null,emailAtu,dataNasc,emailCad, generoIdent;
-
-
-				int  tipoSexo,tipoSexoCad;
-	    
+				int tipoSexo,tipoSexoCad;
+	
 				
 				
 				cliente.criarCamarotesEspeciais();
@@ -55,55 +43,51 @@ public class Menu {
 				
 				//cliente.criarCamarotes(4);
 				
-	    while (true) {
-	    	
-	    	System.out.println("_________________________________________________________________________________");
-	    	System.out.println("																				 ");
-	    	System.out.println(" ##### ####  #####  #####  ##### #####  #####      ######  ###  ##   ##  ###     ");
-	    	System.out.println("  #__# #_##  #___#    #    #####   #    #___#         #    #_#   #___#   #_#     ");
-	    	System.out.println("  #### ##    #___# #__#    #       #    #___#     #___#   #_#_#   #_#   #_#_#    ");
-	    	System.out.println("  #    # #   #####  ###    #####   #    #####      ####  #     #   #   #     #   ");
-	    	System.out.println("_________________________________________________________________________________");
-	   
-	    
-	    	System.out.println("_________________________________________________________________________________");
-	    	System.out.println("																				 ");
-	    	System.out.println("			#######___##_#_____#_##___########							  		 ");
-	    	System.out.println("			##________##__#___#__##___##____###							         ");
-	    	System.out.println("			##________##___###___##___##_____###						         ");
-	    	System.out.println("			##________##____#____##___##____###							         ");
-	    	System.out.println("			#######___##_________##___#######							         ");
-	    	System.out.println("_________________________________________________________________________________");
-	    	
-	    	
-	    	System.out.println("																				 ");
-	    	System.out.println("       ########     ######   #    #  ########  #######----------###	    		 ");
-	    	System.out.println("       ##---------- ##___##  #	  #--##	    #  ##    #---------# ##				 ");
-	    	System.out.println("       ##   #####---##__##   #____#  #######   ##----#--------#--## 			 ");
-	    	System.out.println("       ##_____#-----####-----#____#--##	-------##--- #-----------##        		 ");
-	    	System.out.println("       ########-----##  ##---######--##------- #######--------########		      ");
-	    	
-	    	System.out.println("_________________________________________________________________________________");
-	    	keyPress();
-	    	
-
+	 while (true) {
+	 	
+	 	System.out.println("_________________________________________________________________________________");
+	 	System.out.println("																				 ");
+	 	System.out.println(" ##### #### ##### ##### ##### ##### ##### ###### ### ## ## ### ");
+	 	System.out.println(" #__# #_## #___# # ##### # #___# # #_# #___# #_# ");
+	 	System.out.println(" #### ## #___# #__# # # #___# #___# #_#_# #_# #_#_# ");
+	 	System.out.println(" # # # ##### ### ##### # ##### #### # # # # # ");
+	 	System.out.println("_________________________________________________________________________________");
+	
+	
+	 	System.out.println("_________________________________________________________________________________");
+	 	System.out.println("																				 ");
+	 	System.out.println("			#######___##_#_____#_##___########							 		 ");
+	 	System.out.println("			##________##__#___#__##___##____###							 ");
+	 	System.out.println("			##________##___###___##___##_____###						 ");
+	 	System.out.println("			##________##____#____##___##____###							 ");
+	 	System.out.println("			#######___##_________##___#######							 ");
+	 	System.out.println("_________________________________________________________________________________");
+	 	
+	 	
+	 	System.out.println("																				 ");
+	 	System.out.println(" ######## ###### # # ######## #######----------###	 		 ");
+	 	System.out.println(" ##---------- ##___## #	 #--##	 # ## #---------# ##				 ");
+	 	System.out.println(" ## #####---##__## #____# ####### ##----#--------#--## 			 ");
+	 	System.out.println(" ##_____#-----####-----#____#--##	-------##--- #-----------## 		 ");
+	 	System.out.println(" ########-----## ##---######--##------- #######--------########		 ");
+	 	
+	 	System.out.println("_________________________________________________________________________________");
+	 	keyPress();
+	 	
 			do {
 				System.out.println("								\n");
-		    	System.out.println("								\n");
+		 	System.out.println("								\n");
 				System.out.println("Bem-vindo ao sistema de RESERVA!");
 				System.out.println("______________MENU________________\n");
 				System.out.println("	Escolha uma opção:		");
-				System.out.println("	 1- LOGIN		    	");
+				System.out.println("	 1- LOGIN		 	");
 				System.out.println("	 2- CRIAR CADASTRO		");
 				System.out.println("	 0- Sair				");
 				System.out.println("__________________________________\n");
-				System.out.println("Entre com a opção desejada:      ");
-				
-
+				System.out.println("Entre com a opção desejada: ");
 				
 				
-
-
+				
 				
 				try {
 					opcao = leia.nextInt();
@@ -113,17 +97,13 @@ public class Menu {
 					opcao = 0;
 					
 				}
-
-
 				if (opcao == 0) {
-
 					System.out.println("#####################################################################");
-					System.out.println("\n  		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
+					System.out.println("\n 		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
 					System.out.println("\n			TENHA UM OTIMO DIA! 									 ");
 					System.out.println("#####################################################################");
 					leia.close();
 					System.exit(0);
-
 				}
 				switch (opcao) {
 				case 1:
@@ -132,32 +112,32 @@ public class Menu {
 					
 					System.out.print("------------------------------\n");
 					
-			        System.out.print("Digite o seu Email: ");
-			        String emaillogin = leia.next();
-			        System.out.print("\nSenha: ");
-			        String senhalogin = leia.next();
-			        
-			        boolean login = cliente.autenticar(emaillogin,senhalogin);
-			        
-			        if (login) {
-			        	System.out.print("------------------------------\n");
-			            System.out.println("\nAutenticado com sucesso!");
-			            System.out.print("------------------------------\n");
-			            // Código para redirecionar o usuário para a página principal
-			            clienteLogado = cliente.retornaLogado(emaillogin, senhalogin);
-			            clienteLogado.visualizar();
-			            logado = true;
-			        } else {
-			        	System.out.print("------------------------------");
-			            System.out.println("\nEmail ou senha inválidos!");
-			            System.out.println("\n Faça o seu Cadastro Primeiro");
-			            System.out.println("\n E Tenta Novamente!");
-			            System.out.print("------------------------------");
-			            // Código para exibir uma mensagem de erro ao usuário
-			            
-			        }
-			        
-			        keyPress();
+			 System.out.print("Digite o seu Email: ");
+			 String emaillogin = leia.next();
+			 System.out.print("\nSenha: ");
+			 String senhalogin = leia.next();
+			
+			 boolean login = cliente.autenticar(emaillogin,senhalogin);
+			
+			 if (login) {
+			 	System.out.print("------------------------------\n");
+			 System.out.println("\nAutenticado com sucesso!");
+			 System.out.print("------------------------------\n");
+			 // Código para redirecionar o usuário para a página principal
+			 clienteLogado = cliente.retornaLogado(emaillogin, senhalogin);
+			 clienteLogado.visualizar();
+			 logado = true;
+			 } else {
+			 	System.out.print("------------------------------");
+			 System.out.println("\nEmail ou senha inválidos!");
+			 System.out.println("\n Faça o seu Cadastro Primeiro");
+			 System.out.println("\n E Tenta Novamente!");
+			 System.out.print("------------------------------");
+			 // Código para exibir uma mensagem de erro ao usuário
+			
+			 }
+			
+			 keyPress();
 					 break;
 					
 				case 2:
@@ -233,7 +213,7 @@ public class Menu {
 					
 					
 					}
-	       
+	
 					keyPress();
 					break;
 				}	
@@ -249,11 +229,11 @@ public class Menu {
 				System.out.println("	 5- CONSULTAR(CAMAROTE)	");
 				System.out.println("	 6- EXCLUIR(RESERVA)	");
 				System.out.println("	 7- EXCLUIR CADASTRO	");
-				System.out.println("	 8- DESLOGAR        	");
+				System.out.println("	 8- DESLOGAR 	");
 				System.out.println("	 0- Sair				");
 				System.out.println("__________________________________\n");
-				System.out.println("Entre com a opção desejada:      ");
-				System.out.println("			  					");
+				System.out.println("Entre com a opção desejada: ");
+				System.out.println("			 					");
 				
 				
 				try {
@@ -266,14 +246,12 @@ public class Menu {
 				}
 				
 				if (opcao == 0) {
-
 					System.out.println("#####################################################################");
-					System.out.println("\n  		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
+					System.out.println("\n 		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
 					System.out.println("\n			TENHA UM OTIMO DIA! 									 ");
 					System.out.println("#####################################################################");
 					leia.close();
 					System.exit(0);
-
 				}
 				
 				switch (opcao) {
@@ -362,7 +340,7 @@ public class Menu {
 					
 					
 					}
-	       
+	
 					keyPress();
 					break;
 	
@@ -442,7 +420,7 @@ public class Menu {
 				case 8:
 					System.out.println("Deslogar da conta? (S/N):");
 					deslogar = leia.next().charAt(0);
-					if(deslogar == 's' || deslogar == 'S') 
+					if(deslogar == 's' || deslogar == 'S')
 						logado = false;
 					break;
 					
@@ -455,21 +433,12 @@ public class Menu {
 			
 		}
 	}
-
-
-
 	public static void keyPress() {
-
 		try {
-
 			System.out.println("\n\nPressione Enter para Continuar...");
 			System.in.read();
-
 		} catch (IOException e) {
-
 			System.out.println("Você pressionou uma tecla diferente de enter!");
 		}
 	}
 }
-
-	
