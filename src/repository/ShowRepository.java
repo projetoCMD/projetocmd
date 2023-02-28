@@ -11,4 +11,9 @@ public interface ShowRepository {
 	public boolean agendarCamarote(String nomeAgenda, int pacote);
 	public void conferirAgendamento(String nome, int pacote, int numAgenda);
 	public void cancelarReserva(String nome, int numCam, int pacote);
+
+	void listarCadastro(Cadastro cadastro);
+	void procurarPorEmail(String email);
+	public Cadastro retornaLogado(String email, String senha);
+	
 }

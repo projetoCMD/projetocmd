@@ -3,37 +3,30 @@ package show.model;
 import java.time.LocalDate;
 
 public class Cadastro {
-	
-	private long id;
+
     private String nome; 
     private String senha;
     private String cpf;
-    private String sexo;
+    private int tipoSexo;
     private String telefone;
+    private String dataNascimento;
     private String email;
-    private LocalDate dataNascimento;
-    
-	public Cadastro(long id, String nome, String senha, String cpf, String sexo, String telefone, LocalDate dataNascimento, String email) {
-		this.id = id;
+   
+
+    public Cadastro(String nome, String senha, String cpf, int tipoSexo, String telefone, String dataNascimento,
+			String email) {
+	
 		this.nome = nome;
 		this.senha = senha;
 		this.cpf = cpf;
-		this.sexo = sexo;
+		this.tipoSexo = tipoSexo;
 		this.telefone = telefone;
 		this.dataNascimento = dataNascimento;
 		this.email = email;
-		
-	}
 
-	public long getId() {
-		return id;
 	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
+    
+    public String getNome() {
 		return nome;
 	}
 
@@ -57,27 +50,31 @@ public class Cadastro {
 		this.cpf = cpf;
 	}
 
-	public String getSexo() {
-		return sexo;
+	public int getTipoSexo() {
+		return tipoSexo;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+
+	public void setTipoSexo(int tipoSexo) {
+		this.tipoSexo = tipoSexo;
 	}
 
 	public String getTelefone() {
 		return telefone;
 	}
 
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-	public LocalDate getDataNascimento() {
+
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -85,23 +82,26 @@ public class Cadastro {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-    public void visualizar(){
 
-        System.out.println("****************************************");
-        System.out.println("   DADOS DE CADASTRO  ");
-        System.out.println("****************************************");   
+
+	public void visualizar(){
+
+        System.out.println("----------------------------------------");
+        System.out.println("            DADOS DE CADASTRO           ");
+        System.out.println("----------------------------------------");
         System.out.println("Nome: " + this.nome);
         System.out.println("Senha: " + this.senha);
-        System.out.println("Data de nascimento: " + this.dataNascimento);
-        System.out.println("CPF: " + this.cpf);
-        System.out.println("Sexo: " + this.sexo);
-        System.out.println("Telefone: " + this.telefone);
         System.out.println("Email: " + this.email);
-        
+        System.out.println("Sua idade: " + this.dataNascimento);
+        System.out.println("CPF: " + this.cpf);
+        System.out.println("Sexo: " + this.tipoSexo);
+        System.out.println("Telefone: " + this.telefone);
+        System.out.println("----------------------------------------");
+
 
     }
 

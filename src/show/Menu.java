@@ -1,14 +1,11 @@
 package show;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import show.controller.ShowController;
 import show.model.Cadastro;
-import show.model.ReservaCamarote;
 
 public class Menu {
 
@@ -16,164 +13,387 @@ public class Menu {
 
 		Scanner leia = new Scanner(System.in);
 		ShowController cliente = new ShowController();
-		ArrayList<ReservaCamarote> camaroteDisp = new ArrayList<ReservaCamarote>();
+		Cadastro clienteLogado = new Cadastro("", "", "", 0, "", "", "");
+		int opcao;
+		int numCam = 0;
+		int pacote = 0;
+		boolean x = true;
+		boolean logado = false;
+		char apagar;
+		char deslogar;
 
-		Cadastro c1 = new Cadastro(1, "Brian Schneider de Lima", "R1p4rT3ex", "123.456.789-01", "Masculino",
-				"(11)98765-4321", LocalDate.of(1994, 10, 6), "brian@generation.com");
-		Cadastro c2 = new Cadastro(2, "Vinicius Prazeres", "E#30y0@*", "987.654.321-10", "Masculino", "(11)91234-5678",
-				LocalDate.of(1995, 5, 13), "vprazeres@generation.com");
-		Cadastro c3 = new Cadastro(3, "Erica Araújo da silva Oliveira", "m5R&8t5h", "444.333.55-22", "Feminino",
-				"(11)98237-4765", LocalDate.of(1997, 8, 24), "ericaraujo@generation.com");
-		Cadastro c4 = new Cadastro(4, "Jennifer Cruz", "%0p%L52%", "842.632.919-87", "Feminino", "(11)98888-7777",
-				LocalDate.of(1997, 11, 16), "jennifercruz@generation.com");
+		String nome, nomeCad, senha, senhaCad, cpf, cpfCad, sexo, telefone, telefoneCad, email, emailbuscar = null,
+				emailAtu, dataN, emailCad;
 
-		cliente.cadastrar(c1);
-		cliente.cadastrar(c2);
-		cliente.cadastrar(c3);
-		cliente.cadastrar(c4);
-
-		cliente.criarCamarotesTradicionais();
-		cliente.criarCamarotesEspeciais();
-
-		int opcao, numCam, pacote;
-
-		long id;
-		String nome = "";
-		String senha, cpf, sexo, telefone, email;
-		LocalDate dataNascimento;
-		nome = "Brian Schneider";
-		boolean x;
+		int tipoSexo, tipoSexoCad;
 
 		while (true) {
 
-			System.out.println("#################################################################");
-			System.out.println("#################################################################");
-			System.out.println("																 ");
-			System.out.println("																 ");
-			System.out.println("				MENU 											 ");
-			System.out.println("																 ");
-			System.out.println("																 ");
-			System.out.println("#################################################################");
-			System.out.println("#################################################################");
-			System.out.println("			1- CADASTRO											 ");
-			System.out.println("			2- LOGIN											 ");
-			System.out.println("			3- VISUALIZAR CADASTRO								 ");
-			System.out.println("			4- RESERVAR            								 ");
-			System.out.println("			5- APAGAR cliente									 ");
-			System.out.println("			6- CONSULTAR cliente								 ");
-			System.out.println("			7- CONSULTAR RESERVA								 ");
-			System.out.println("			8- CANCELAR RESERVA	      							 ");
-			System.out.println(" 			0- SAIR						                     	 ");
-			System.out.println("#################################################################");
-			System.out.println("#################################################################");
-			System.out.println("Entre com a opção desejada:      								 ");
-			System.out.println("			  													 ");
+			System.out.println("_________________________________________________________________________________");
+			System.out.println("																				 ");
+			System.out.println(" ##### ####  #####  #####  ##### #####  #####      ######  ###  ##   ##  ###     ");
+			System.out.println("  #__# #_##  #___#    #    #####   #    #___#         #    #_#   #___#   #_#     ");
+			System.out.println("  #### ##    #___# #__#    #       #    #___#     #___#   #_#_#   #_#   #_#_#    ");
+			System.out.println("  #    # #   #####  ###    #####   #    #####      ####  #     #   #   #     #   ");
+			System.out.println("_________________________________________________________________________________");
 
-			try {
-				opcao = leia.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("Digite valores inteiros de 0 a 6! ");
-				leia.nextLine();
-				opcao = 0;
+			System.out.println("_________________________________________________________________________________");
+			System.out.println("																				 ");
+			System.out.println("			#######___##_#_____#_##___########							  		 ");
+			System.out.println("			##________##__#___#__##___##____###							         ");
+			System.out.println("			##________##___###___##___##_____###						         ");
+			System.out.println("			##________##____#____##___##____###							         ");
+			System.out.println("			#######___##_________##___#######							         ");
+			System.out.println("_________________________________________________________________________________");
 
-			}
+			System.out.println("																				 ");
+			System.out.println("       ########     ######   #    #  ########  #######----------###	    		 ");
+			System.out.println("       ##---------- ##___##  #	  #--##	    #  ##    #---------# ##				 ");
+			System.out.println("       ##   #####---##__##   #____#  #######   ##----#--------#--## 			 ");
+			System.out.println("       ##_____#-----####-----#____#--##	-------##--- #-----------##        		 ");
+			System.out.println("       ########-----##  ##---######--##------- #######--------########		      ");
 
-			if (opcao == 0) {
+			System.out.println("_________________________________________________________________________________");
+			keyPress();
 
-				System.out.println("#####################################################################");
-				System.out.println("\n  		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
-				System.out.println("\n			TENHA UM OTIMO DIA! 									 ");
-				System.out.println("#####################################################################");
-				leia.close();
-				System.exit(0);
+			do {
+				System.out.println("								\n");
+				System.out.println("								\n");
+				System.out.println("Bem-vindo ao sistema de RESERVA!");
+				System.out.println("______________MENU________________\n");
+				System.out.println("	Escolha uma opção:		");
+				System.out.println("	 1- LOGIN		    	");
+				System.out.println("	 2- CRIAR CADASTRO		");
+				System.out.println("	 0- Sair				");
+				System.out.println("Entre com a opção desejada:      ");
 
-			}
-			switch (opcao) {
-			case 1:
-				System.out.println("Cadastro \n\n");
+				try {
+					opcao = leia.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("Digite valores inteiros de 0 a 6! ");
+					leia.nextLine();
+					opcao = 0;
 
-				System.out.println("Realizando cadastro...");
-				System.out.println("Digite o Email:");
-//		        String email = leia.nextLine();
-				System.out.println("Digite a senha:");
-//		        String senha = leia.nextLine();		
+				}
 
-				keyPress();
-				break;
-			case 2:
-				System.out.println("Login \n\n");
-				System.out.println("Informe seu email: ");
-				leia.skip("\\R?");
-				email = leia.nextLine();
+				if (opcao == 0) {
 
-				System.out.println("Informe sua senha: ");
-				senha = leia.nextLine();
+					System.out.println("#####################################################################");
+					System.out.println("\n  		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
+					System.out.println("\n			TENHA UM OTIMO DIA! 									 ");
+					System.out.println("#####################################################################");
+					leia.close();
+					System.exit(0);
 
-				keyPress();
-				break;
-			case 3:
-				System.out.println("cliente(Pacote)\n\n");
+				}
+				switch (opcao) {
+				case 1:
+					System.out.print("------------------------------\n");
+					System.out.println("Realizando Login...");
 
-				break;
-			case 4:
-				System.out.println("Pedido\n\n");
+					System.out.print("------------------------------\n");
 
-				break;
+					System.out.print("Digite o seu Email: ");
+					String emaillogin = leia.next();
+					System.out.print("\nSenha: ");
+					String senhalogin = leia.next();
 
-			case 5:
-				System.out.println("Camarote\n\n");
-				do {
+					boolean login = cliente.autenticar(emaillogin, senhalogin);
+
+					if (login) {
+						System.out.print("------------------------------\n");
+						System.out.println("\nAutenticado com sucesso!");
+						System.out.print("------------------------------\n");
+						// Código para redirecionar o usuário para a página principal
+						clienteLogado = cliente.retornaLogado(emaillogin, senhalogin);
+						clienteLogado.visualizar();
+						logado = true;
+					} else {
+						System.out.print("------------------------------");
+						System.out.println("\nEmail ou senha inválidos!");
+						System.out.println("\n Faça o seu Cadastro Primeiro");
+						System.out.println("\n E Tenta Novamente!");
+						System.out.print("------------------------------");
+						// Código para exibir uma mensagem de erro ao usuário
+
+					}
+
+					keyPress();
+					break;
+
+				case 2:
+					System.out.print("------------------------------\n");
+					System.out.println("Criar Cadastro \n\n");
+					System.out.print("------------------------------\n");
+					System.out.println("Realizando cadastro...");
+					System.out.print("------------------------------\n");
+					System.out.print("Informe seu nome: ");
+					leia.skip("\\R?");
+					nomeCad = leia.nextLine();
+
+					System.out.print("Senha: ");
+					leia.skip("\\R?");
+					senhaCad = leia.nextLine();
+					System.out.print("\n");
+
+					System.out.println("CPF: ");
+					leia.skip("\\R?");
+					cpfCad = leia.nextLine();
+
+					System.out.println("Informe o Sexo ");
+
 					do {
-						System.out.println("\nDigite tipo de Camarote:");
-						
-						try {
-							pacote = leia.nextInt();
-						} catch (InputMismatchException e) {
-							System.out.println("\nDigite valores inteiros!");
-							leia.nextLine();
-							pacote = 0;
-							continue;
-						}
-	
-						// Se o número for menor que 1 ou maiior que 4, recomeça o loop
-						if (pacote < 1 || pacote > 2)
-							System.out.println("Digite um número entre 1 e 2!");
-	
-					} while (pacote < 1 || pacote > 2);
-					x = cliente.agendarCamarote(nome, pacote);
-				} while(x == true);
-				break;
+						System.out.println("Sexo -> (1-Mulher | 2-Homem | 3-Outros): ");
+						tipoSexoCad = leia.nextInt();
+					} while (tipoSexoCad < 1 && tipoSexoCad > 3);
 
-			case 6:
-				System.out.println("Consultar cliente\n\n");
-				cliente.listarTodas();
+					switch (tipoSexoCad) {
+					case 1 -> {
+						System.out.println("Mulheres tem direito de descontos de 20%");
 
-				break;
-				
-			case 7:
-				System.out.println("Consultar reserva\n\n");
-				numCam = 3;
-				pacote = 2;
-				cliente.conferirAgendamento(nome, numCam, pacote);
+						// limite = leia.nextFloat();
+						// contas.cadastrar(new ContaCorrente(contas.gerarNumero(), agencia, tipo,
+						// titular, saldo, limite));
 
-				break;
-				
-			case 8:
-				System.out.println("Cancelar reserva\n\n");
-				numCam = 3;
-				pacote = 2;
-				
-				cliente.cancelarReserva(nome, numCam, pacote);
+					}
+					case 2 -> {
+						System.out.println("Homem ");
+						// aniversario = leia.nextInt();
+						// contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), agencia, tipo,
+						// titular, saldo, aniversario));
+					}
+					case 3 ->{
+						System.out.println("Outros: ");
 
-				break;
-				
-			default:
-				System.out.println("\nSaindo do sistema!\n Muito Obrigado!");
-				break;
+						// aniversario = leia.nextInt();
+						// contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), agencia, tipo,
+						// titular, saldo, aniversario));
+
+					}
+
+					}
+					System.out.println("Digite seu telefone/celular: ");
+					leia.skip("\\R?");
+					telefoneCad = leia.nextLine();
+
+					System.out.print("Entre com a data de nascimento DD/MM/AAAA formatada: ");
+
+					dataN = leia.nextLine();
+
+					if (cliente.dataNascimento(dataN) == false) {
+						System.out.println(
+								"\nIdade inválida. Apenas pesosas com idade maior ou igual a 18 são permitidas");
+						break;
+					}
+					System.out.print("Email: ");
+					leia.skip("\\R?");
+					emailCad = leia.nextLine();
+
+					cliente.cadastrar(
+							new Cadastro(nomeCad, senhaCad, cpfCad, tipoSexoCad, telefoneCad, dataN, emailCad));
+
+					keyPress();
+					break;
+				}
+
+			} while (logado == false);
+
+			while (true && logado == true) {
+				System.out.println("	 1- LISTA CADASTROS		");
+				System.out.println("	 2- ATUALIZAR CADASTRO	");
+				System.out.println("	 3- RESERVA(CAMAROTE)	");
+				System.out.println("	 4- LISTA(RESERVAS)		");
+				System.out.println("	 5- CONSULTAR(CAMAROTE)	");
+				System.out.println("	 6- EXCLUIR(RESERVA)	");
+				System.out.println("	 7- EXCLUIR CADASTRO	");
+				System.out.println("	 8- DESLOGAR        	");
+				System.out.println("	 0- Sair				");
+				System.out.println("__________________________________\n");
+				System.out.println("Entre com a opção desejada:      ");
+				System.out.println("			  					");
+
+				try {
+					opcao = leia.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("Digite valores inteiros de 0 a 6! ");
+					leia.nextLine();
+					opcao = 0;
+
+				}
+
+				if (opcao == 0) {
+
+					System.out.println("#####################################################################");
+					System.out.println("\n  		CMD - RELIZAMOS OS SEUS SONHOS						 	 ");
+					System.out.println("\n			TENHA UM OTIMO DIA! 									 ");
+					System.out.println("#####################################################################");
+					leia.close();
+					System.exit(0);
+
+				}
+
+				switch (opcao) {
+				case 1:
+					System.out.print("------------------------------\n");
+					System.out.println("LISTA DE CADASTRO ");
+					System.out.print("------------------------------\n");
+
+					cliente.listarCadastro();
+
+					break;
+
+				case 2:
+					
+					System.out.print("------------------------------\n");
+					System.out.println("ATUALIZAR CADASTRO\n\n");
+					System.out.print("------------------------------\n");
+					System.out.println("Atualizar dados da Conta\n\n");
+					System.out.print("Informe seu nome: ");
+					leia.skip("\\R?");
+					nome = leia.nextLine();
+
+					System.out.print("Senha: ");
+					leia.skip("\\R?");
+					senha = leia.nextLine();
+					System.out.print("\n");
+
+					System.out.println("CPF: ");
+					leia.skip("\\R?");
+					cpf = leia.nextLine();
+
+					System.out.println("Informe o Sexo ");
+
+					do {
+						System.out.println("Sexo -> (1-Mulher | 2-Homem | 3-Outros): ");
+						tipoSexo = leia.nextInt();
+					} while (tipoSexo < 1 && tipoSexo > 3);
+					
+
+					switch (tipoSexo) {
+					case 1 :
+						System.out.println("Mulheres tem direito de descontos de 20%");
+
+					
+					case 2 : {
+						System.out.println("Homem ");
+
+					}
+					case 3 : {
+						System.out.println("Outros: ");
+
+
+					}
+
+					}
+					System.out.println("Digite seu telefone/celular: ");
+					leia.skip("\\R?");
+					telefone = leia.nextLine();
+
+					System.out.print("Entre com a data de nascimento DD/MM/AAAA formatada: ");
+
+					dataN = leia.nextLine();
+
+					if (cliente.dataNascimento(dataN) == false) {
+						System.out.println(
+								"\nIdade inválida. Apenas pesosas com idade maior ou igual a 18 são permitidas");
+						break;
+					}
+					System.out.print("Email: ");
+					leia.skip("\\R?");
+					emailCad = leia.nextLine();
+
+					cliente.atualizarCadastro(new Cadastro(nome, senha, cpf, tipoSexo, telefone, dataN, emailCad),
+							clienteLogado);
+
+					keyPress();
+					break;
+
+				case 3:
+
+					System.out.print("------------------------------\n");
+					System.out.println("RESERVA(CAMAROTE)\n\n");
+					System.out.print("------------------------------\n");
+					System.out.println("Camarote\n\n");
+					do {
+						do {
+							System.out.println("\nDigite tipo de Camarote:");
+
+							try {
+								pacote = leia.nextInt();
+							} catch (InputMismatchException e) {
+								System.out.println("\nDigite valores inteiros!");
+								leia.nextLine();
+								pacote = 0;
+								continue;
+							}
+
+							if (pacote < 1 || pacote > 2)
+								System.out.println("Digite um número entre 1 e 2!");
+
+						} while (pacote < 1 || pacote > 2);
+						x = cliente.agendarCamarote(clienteLogado.getNome(), pacote);
+					} while (x == true);
+					break;
+				case 4:
+					System.out.print("------------------------------\n");
+					System.out.println("LISTA(RESERVAS)\n\n");
+					System.out.print("------------------------------\n");
+					cliente.listarTodas();
+
+					break;
+				case 5:
+					System.out.print("------------------------------\n");
+					System.out.println("CONSULTAR(CAMAROTE)\n\n");
+					System.out.print("------------------------------\n");
+					System.out.println("Digitar número referente ao tipo do pacote:");
+					pacote = leia.nextInt();
+					System.out.println("Digitar número do camarote:");
+					numCam = leia.nextInt();
+					cliente.conferirAgendamento(clienteLogado.getNome(), numCam, pacote);
+					break;
+				case 6:
+					System.out.print("------------------------------\n");
+					System.out.println("EXCLUIR(RESERVA)\n\n");
+					System.out.print("------------------------------\n");
+					System.out.print("------------------------------\n");
+					System.out.println("CONSULTAR(CAMAROTE)\n\n");
+					System.out.print("------------------------------\n");
+					System.out.println("Digitar número referente ao tipo do pacote:");
+					pacote = leia.nextInt();
+					System.out.println("Digitar número do camarote:");
+					numCam = leia.nextInt();
+					cliente.cancelarReserva(clienteLogado.getNome(), numCam, pacote);
+
+					break;
+				case 7:
+					System.out.print("------------------------------\n");
+					System.out.println("EXCLUIR(CADASTRO)\n\n");
+					System.out.print("------------------------------\n");
+					System.out.println("Excluir Cadastro\n\n");
+					System.out.println("Deseja apagar a sua conta? (S/N)");
+					apagar = leia.next().charAt(0);
+					if (apagar == 's' || apagar == 'S') {
+						cliente.deletar(clienteLogado);
+						logado = false;
+					}
+
+					keyPress();
+					break;
+				case 8:
+					System.out.println("Deslogar da conta? (S/N):");
+					deslogar = leia.next().charAt(0);
+					if (deslogar == 's' || deslogar == 'S')
+						logado = false;
+					break;
+
+				default:
+					System.out.println("\nSaindo do sistema!\n Muito Obrigado!");
+					break;
+				}
+
 			}
 
 		}
-
 	}
 
 	public static void keyPress() {
@@ -189,5 +409,3 @@ public class Menu {
 		}
 	}
 }
-
-	
